@@ -6,7 +6,7 @@ print("-----------------------------------\n")
 student_records = {}
 
 while True:
-    print("SELECT FROM THE OPTION BELOW \nA - Add information\nB - Record\nC - Search a Record\nD - Delete a Record\nE - Exit Program")
+    print("SELECT FROM THE OPTION BELOW \nA - Add information\nB - Record\nC - Search a Record\nD - Delete a Record\nE - Edit Existing Record\nF - Export File To JSON\nG - Import File To JSON\nH - Exit Program")
 
     choice = input("your choice --> ").lower()
 
@@ -81,7 +81,42 @@ while True:
 
         continue
     elif choice == 'e':
-        print("System Exit")
+        os.system('cls')
+        print("Editing Record")
+        search_id = input("Enter id to search -> ").lower()
+
+        for id in student_records.keys():
+            if search_id in student_records.keys():
+                print("===============================")
+                print("\n\nRECORD FOUND")
+                print("===============================")
+                # print the record of search student
+                for i in student_records[search_id]:
+                    print(f"-- {i}")
+
+                first_name = input("Enter Student First Name --> ").upper()
+                Last_name = input("Enter Student Last Name --> ").upper()
+                course = input("Enter Student course --> ").upper()
+                email = input("Enter student email address --> ")
+                isSingle = input("Are you single (True or False) --> ")
+
+                student_records[search_id][0] = first_name
+                student_records[search_id][1] = Last_name
+                student_records[search_id][2] = course
+                student_records[search_id][3] = email
+
+                print("DATA UPDATED")
+
+            else:
+                print("===============================")
+                print("\n\nNO RECORD FOUND")
+                print("===============================")
+    elif choice == 'f':
+        print("")
+    elif choice == 'g':
+        print("")
+    elif choice == 'h':
+        print("Exiting Program")
         break
     else:
         print("\nINVALID CHOICE, please RE-ENTER YOUR CHOICE ")
